@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Notify Send Snap
+Exec=snap-fixes-it
+Icon=${SNAP}/usr/share/icons/call-start.png
+Type=Application
+Categories=GTK;GNOME;Utility;
+X-GNOME-UsesNotifications=true

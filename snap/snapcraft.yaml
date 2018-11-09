@@ -1,0 +1,44 @@
+name: notify-send-test-snap
+version: 'git'
+summary: Test notifications from inside a snap
+description: Expect notifications to show icons
+
+grade: stable
+confinement: strict
+
+parts:
+  notify:
+    plugin: nil
+    source: data
+    stage-packages:
+      - libnotify-bin
+    override-build: |
+      snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/
+      cp *.png $SNAPCRAFT_PART_INSTALL/usr/share/icons/
+      cp *.desktop $SNAPCRAFT_PART_INSTALL
+
+apps:
+  notify-send-test-snap:
+    command: usr/bin/notify-send "Notify from snap" "Using local icon"
+             -i /usr/share/icons/call-start.png
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  image-path:
+    command: usr/bin/notify-send "Notify from snap" "Using local icon hint"
+             -h string:image-path:/usr/share/icons/call-stop.png
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+  desktop-entry:
+    command: usr/bin/notify-send "Notify from snap" "Using desktop-entry"
+             -h string:desktop-entry:desktop-entry.desktop
+    desktop: desktop-entry.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
