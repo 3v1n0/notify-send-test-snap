@@ -6,6 +6,8 @@ description: Expect notifications to show icons
 grade: stable
 confinement: strict
 
+base: core18
+
 parts:
   libnotify:
     build-packages:
