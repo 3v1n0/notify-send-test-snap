@@ -7,11 +7,28 @@ grade: stable
 confinement: strict
 
 parts:
+  libnotify:
+    build-packages:
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgdk-pixbuf2.0-dev
+    stage-packages:
+      - libgdk-pixbuf2.0-0
+    plugin: meson
+    source-type: git
+    source: https://gitlab.gnome.org/iainl/libnotify
+    source-branch: snap-paths-support
+    meson-parameters:
+      - --prefix=/usr
+      - -Dintrospection=disabled
+      - -Dgtk_doc=false
+      - -Ddocbook_docs=disabled
+
   notify:
+    after:
+      - libnotify
     plugin: nil
     source: data
-    stage-packages:
-      - libnotify-bin
     override-build: |
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/
