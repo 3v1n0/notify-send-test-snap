@@ -69,12 +69,51 @@ apps:
       - desktop-legacy
       - unity7
 
-  desktop-entry-explicit:
+  desktop-entry-explicit-id:
     environment:
       G_MESSAGES_DEBUG: libnotify
     command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
+             -h string:desktop-entry:desktop-entry
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  desktop-entry-explicit-file-name:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
+    command: usr/bin/notify-send "Notify from snap" "Using explicit path desktop-entry"
              -h string:desktop-entry:desktop-entry.desktop
-    desktop: desktop-entry.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  desktop-entry-explicit-path:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
+    command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
+             -h string:desktop-entry:$SNAP/desktop-entry.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  desktop-entry-explicit-uri:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
+    command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
+             -h string:desktop-entry:file:///desktop-entry.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  desktop-entry-explicit-snapped-uri:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
+    command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
+             -h string:desktop-entry:file://$SNAP/desktop-entry.desktop
     plugs:
       - desktop
       - desktop-legacy
