@@ -59,6 +59,16 @@ apps:
       - desktop-legacy
       - unity7
 
+  image-uri:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
+    command: usr/bin/notify-send "Notify from snap" "Using local icon URI hint"
+             -i "file:///usr/share/icons/call-stop.png"
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
   desktop-entry:
     environment:
       G_MESSAGES_DEBUG: libnotify
