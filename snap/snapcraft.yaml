@@ -18,12 +18,13 @@ parts:
       - libgdk-pixbuf2.0-0
     plugin: meson
     source-type: git
-    source: https://gitlab.gnome.org/iainl/libnotify
-    source-branch: snap-paths-support
+    source: https://gitlab.gnome.org/3v1n0/libnotify
+    source-branch: snap-fixes
     meson-parameters:
       - --prefix=/usr
       - -Dintrospection=disabled
       - -Dgtk_doc=false
+      - -Dman=false
       - -Ddocbook_docs=disabled
 
   notify:
