@@ -40,6 +40,8 @@ parts:
 
 apps:
   notify-send-test-snap:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
     command: usr/bin/notify-send "Notify from snap" "Using local icon"
              -i /usr/share/icons/call-start.png
     plugs:
@@ -48,6 +50,8 @@ apps:
       - unity7
 
   image-path:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
     command: usr/bin/notify-send "Notify from snap" "Using local icon hint"
              -h string:image-path:/usr/share/icons/call-stop.png
     plugs:
@@ -56,6 +60,8 @@ apps:
       - unity7
 
   desktop-entry:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
     command: usr/bin/notify-send "Notify from snap" "Using implicit desktop-entry"
     desktop: desktop-entry.desktop
     plugs:
@@ -64,6 +70,8 @@ apps:
       - unity7
 
   desktop-entry-explicit:
+    environment:
+      G_MESSAGES_DEBUG: libnotify
     command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
              -h string:desktop-entry:desktop-entry.desktop
     desktop: desktop-entry.desktop
