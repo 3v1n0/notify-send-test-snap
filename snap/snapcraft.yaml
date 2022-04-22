@@ -54,8 +54,17 @@ apps:
       - desktop
       - desktop-legacy
       - unity7
+
   desktop-entry:
-    command: usr/bin/notify-send "Notify from snap" "Using desktop-entry"
+    command: usr/bin/notify-send "Notify from snap" "Using implicit desktop-entry"
+    desktop: desktop-entry.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - unity7
+
+  desktop-entry-explicit:
+    command: usr/bin/notify-send "Notify from snap" "Using explicit desktop-entry"
              -h string:desktop-entry:desktop-entry.desktop
     desktop: desktop-entry.desktop
     plugs:
